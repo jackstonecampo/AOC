@@ -72,7 +72,6 @@ int main(int argc, char* argv[]) {
 
         if (c == END_SUBSET || c == END_CUBE) {
             num_cubes = atoi(buffer.secondary);
-            printf("%d%c, ", num_cubes, get_colour(buffer.buf));
             switch (get_colour(buffer.buf)) {
                 case 'r': min_red = (num_cubes > min_red) ? num_cubes : min_red; break;
                 case 'g': min_green = (num_cubes > min_green) ? num_cubes : min_green; break;
@@ -84,16 +83,13 @@ int main(int argc, char* argv[]) {
 
         if (c == '\n') {
             num_cubes = atoi(buffer.secondary);
-            printf("%d%c\n", num_cubes, get_colour(buffer.buf));
             switch (get_colour(buffer.buf)) {
                 case 'r': min_red = (num_cubes > min_red) ? num_cubes : min_red; break;
                 case 'g': min_green = (num_cubes > min_green) ? num_cubes : min_green; break;
                 case 'b': min_blue = (num_cubes > min_blue) ? num_cubes : min_blue; break;
             }
 
-            printf("R: %d G: %d B: %d\n", min_red, min_green, min_blue);
             int power = min_red * min_green * min_blue;
-            printf("power: %d\n", power);
             total_power += power;
             min_red = 0;
             min_green = 0;
